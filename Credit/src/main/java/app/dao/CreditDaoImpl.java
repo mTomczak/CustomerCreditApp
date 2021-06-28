@@ -1,6 +1,6 @@
-package dao;
+package app.dao;
 
-import model.Credit;
+import app.model.Credit;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -32,10 +32,11 @@ public class CreditDaoImpl implements CreditDao {
 
     @Override
     public Credit getCredit(int ID) {
-//        Credit credit = entityManager.find(Credit.class, ID);
+
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         Credit credit = entityManager.find(Credit.class, ID);
+//        List<Credit> credit1 =  entityManager.createQuery("Select * from " + Credit.class.getSimpleName() ).getResultList();
         transaction.commit();
 //        entityManager.close();
         return credit;

@@ -24,7 +24,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>app.SpringDiBootApplication</mainClass>
+                                    <mainClass>app.SpringMvcBootApplication</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
