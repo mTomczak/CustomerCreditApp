@@ -3,10 +3,10 @@ package app;
 import dao.CreditDao;
 import dao.CreditDaoImpl;
 import model.Credit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 @SpringBootApplication
@@ -16,16 +16,12 @@ public class SpringDiBootApplication {
         System.out.println("test aplikacji");
 
         ConfigurableApplicationContext contextApp = SpringApplication.run(SpringDiBootApplication.class, args);
-//        SpringApplication.run(SpringDiBootApplication.class, args);
-//        AnnotationConfigApplicationContext contextApp =
-//                new AnnotationConfigApplicationContext(SpringDiBootApplication.class);
 
-//        CreditDaoImpl creditDao = contextApp.getBean(CreditDaoImpl.class);
 
         CreditDao creditDao = new CreditDaoImpl();
 
         Credit credit = new Credit();
-        credit.setCreditName("FirstCredit");
+        credit.setCreditName("Sekend");
 
         creditDao.saveCredit(credit);
 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 
+@Component
 @Repository
 public class CreditDaoImpl implements CreditDao {
 
@@ -24,19 +25,25 @@ public class CreditDaoImpl implements CreditDao {
     public void saveCredit(Credit credit) {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        entityManager.persist(credit);
+        entityManager.merge(credit);
         transaction.commit();
-        entityManager.close();
+//        entityManager.close();
     }
 
     @Override
     public Credit getCredit(int ID) {
+//        Credit credit = entityManager.find(Credit.class, ID);
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
         Credit credit = entityManager.find(Credit.class, ID);
+        transaction.commit();
+//        entityManager.close();
         return credit;
     }
 
     @Override
-    public void closeTransaction() {
-
+    public void closeEntityManager() {
+        entityManager.close();
     }
+
 }
