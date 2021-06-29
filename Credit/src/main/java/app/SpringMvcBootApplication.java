@@ -8,7 +8,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 
 @SpringBootApplication
-public class SpringMvcBootApplication extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class SpringMvcBootApplication  {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -16,19 +16,21 @@ public class SpringMvcBootApplication extends AbstractAnnotationConfigDispatcher
 //        ConfigurableApplicationContext contextApp = SpringApplication.run(SpringMvcBootApplication.class, args);
 
     }
-
-    @Override
-    protected Class<?>[] getRootConfigClasses() {
-        return null;
-    }
-
-    @Override
-    protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{WebConfig.class};
-    }
-
-    @Override
-    protected String[] getServletMappings() {
-        return new String[]{"/"};
-    }
+//
+//    @Override
+//    protected Class<?>[] getRootConfigClasses() {
+//        return null;
+//    }
+//
+//    @Override
+//    protected Class<?>[] getServletConfigClasses() {
+//        return new Class[]{WebConfig.class};
+//    }
+//
+//    @Override
+//    protected String[] getServletMappings() {
+//        return new String[]{"/"};
+//    }
 }
+
+//extends AbstractAnnotationConfigDispatcherServletInitializer
