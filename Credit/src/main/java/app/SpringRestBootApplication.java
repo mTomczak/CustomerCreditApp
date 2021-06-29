@@ -2,17 +2,14 @@ package app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
 @SpringBootApplication
-public class SpringMvcBootApplication  {
+public class SpringRestBootApplication {
 
     public static void main(String[] args) throws InterruptedException {
 
-        SpringApplication.run(SpringMvcBootApplication.class);
+        SpringApplication.run(SpringRestBootApplication.class);
 //        ConfigurableApplicationContext contextApp = SpringApplication.run(SpringMvcBootApplication.class, args);
 
     }

@@ -2,6 +2,8 @@ package app.controler;
 
 import app.dao.CreditDaoImpl;
 import app.model.Credit;
+import app.model.Customer;
+import app.model.Product;
 import app.model.RestCreditModel;
 import app.repository.CreditRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -24,7 +28,14 @@ public class CreditController {
     private RestCreditModel restCreditModel;
     private CreditRepository creditRepository;
 
+    @Autowired
+    Credit credit;
 
+    @Autowired
+    Customer customer;
+
+    @Autowired
+    Product product;
 
     @Autowired
     public CreditController(CreditDaoImpl creditDaoimpl, RestCreditModel restCreditModel, CreditRepository creditRepository){
@@ -36,23 +47,6 @@ public class CreditController {
     @RequestMapping("/isitworking")
     public String test(){
         return "isitworking";
-    }
-
-    @RequestMapping("/")
-    public String home(){
-        return "home";
-    }
-
-    @RequestMapping("/repository")
-    public void repository(){
-        List<Credit> creditList = new ArrayList<>();
-        creditList.add(new Credit("jedyny"));
-        creditList.add(new Credit("zielony"));
-        creditList.add(new Credit("fajny"));
-
-        creditList.forEach(creditRepository::save);
-
-
     }
 
 
@@ -73,6 +67,31 @@ public class CreditController {
         restCreditModel.setProductName(productName);
         restCreditModel.setProductValue(productValue);
         restCreditModel.setCreditName(creditName);
+
+           credit.setCreditName(restCreditModel.getCreditName());
+            creditRepository.save(credit);
+
+           restCreditModel.setCreditID(creditRepository.findByCreditName(credit.getCreditName()).getID());
+
+
+
+        customer.setFirstName(restCreditModel.getUserFirstName());
+        customer.setSurname(restCreditModel.getUserSurname());
+        customer.setPesel(restCreditModel.getPersonalNumber());
+
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.postForEntity("http://localhost:9090/putClient", customer, RestCreditModel.class);
+
+        try{
+            Customer insertCustomer =  restTemplate.getForObject("http://localhost:9090/getClientID", Customer.class);
+            restCreditModel.setUserID(insertCustomer.getID());
+        }catch (NullPointerException e ){
+
+        }
+
+
+        //TODO
+        //Przekazanie do Product
 
 
 

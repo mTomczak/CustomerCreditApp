@@ -24,7 +24,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>app.SpringMvcBootApplication</mainClass>
+                                    <mainClass>app.SpringRestBootApplication</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

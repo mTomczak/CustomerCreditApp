@@ -13,6 +13,7 @@ public class RestCreditModel {
     private String creditName;
     private int creditID;
     private int productID;
+    private int userID;
 
     public String getUserFirstName() {
         return userFirstName;
@@ -76,5 +77,13 @@ public class RestCreditModel {
 
     public void setProductID(int productID) {
         this.productID = productID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }
