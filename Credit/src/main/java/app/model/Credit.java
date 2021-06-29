@@ -33,6 +33,9 @@ public class Credit implements Serializable {
         this.ID = ID;
     }
 
-    public Credit() {
+    public Credit(){};
+
+    public Credit(String creditName) {
+        this.creditName = creditName;
     }
 }

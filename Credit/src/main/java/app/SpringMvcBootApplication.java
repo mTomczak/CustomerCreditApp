@@ -3,26 +3,32 @@ package app;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
 @SpringBootApplication
-public class SpringMvcBootApplication {
+public class SpringMvcBootApplication extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("test aplikacji");
 
-        ConfigurableApplicationContext contextApp = SpringApplication.run(SpringMvcBootApplication.class, args);
+        SpringApplication.run(SpringMvcBootApplication.class);
+//        ConfigurableApplicationContext contextApp = SpringApplication.run(SpringMvcBootApplication.class, args);
 
+    }
 
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return null;
+    }
 
-//        CreditDao creditDao = new CreditDaoImpl();
-//
-//        Credit credit = new Credit();
-//        credit.setCreditName("Sekend");
-//
-//        creditDao.saveCredit(credit);
-//
-//        System.out.println("wstawiony credit");
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[]{WebConfig.class};
+    }
 
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
     }
 }

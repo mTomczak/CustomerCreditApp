@@ -16,7 +16,7 @@ class CreditDaoImplTest {
 //    @Autowired
 //    CreditDaoImpl creditDao;
 
-    CreditDao creditDao = new CreditDaoImpl();
+    private CreditDao creditDao = new CreditDaoImpl();
 
     @Test
     void saveCredit() {
@@ -25,9 +25,7 @@ class CreditDaoImplTest {
         creditDao.saveCredit(credit);
 
         Credit testCredit = creditDao.getCredit(1);
-
-        creditDao.closeEntityManager();
-
+        creditDao.closeManager();
         assertEquals(credit.getCreditName(), testCredit.getCreditName());
 
 
