@@ -15,6 +15,8 @@ public class Credit implements Serializable {
     @GeneratedValue
     private int ID;
     private String creditName;
+    private int CustomerID;
+    private int ProudctID;
 
 
     public String getCreditName() {
@@ -31,6 +33,22 @@ public class Credit implements Serializable {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public int getCustomerID() {
+        return CustomerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        CustomerID = customerID;
+    }
+
+    public int getProudctID() {
+        return ProudctID;
+    }
+
+    public void setProudctID(int proudctID) {
+        ProudctID = proudctID;
     }
 
     public Credit(){};
