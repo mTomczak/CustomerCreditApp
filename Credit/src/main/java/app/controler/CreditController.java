@@ -78,10 +78,10 @@ public class CreditController {
         customer.setPesel(restCreditModel.getPersonalNumber());
 
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForEntity("http://localhost:9090/putClient", customer, RestCreditModel.class);
+        restTemplate.postForEntity("http://localhost:9090/putCustomer", customer, RestCreditModel.class);
 
         try{
-            Customer insertCustomer =  restTemplate.getForObject("http://localhost:9090/getClientID", Customer.class);
+            Customer insertCustomer =  restTemplate.getForObject("http://localhost:9090/getCustomer", Customer.class);
             restCreditModel.setUserID(insertCustomer.getID());
         }catch (NullPointerException e ){
 
