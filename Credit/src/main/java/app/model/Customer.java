@@ -1,5 +1,8 @@
 package app.model;
 
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,10 +11,12 @@ import java.io.Serializable;
 
 @Entity
 @Table
+@Component
 public class Customer implements Serializable {
 
     @Id
     @GeneratedValue
+    @NonNull
     private int ID;
     private String firstName;
     private String surname;

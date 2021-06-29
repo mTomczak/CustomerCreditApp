@@ -1,5 +1,8 @@
 package app.model;
 
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,11 +12,13 @@ import java.io.Serializable;
 
 @Entity
 @Table
+@Component
 public class Credit implements Serializable {
 
 
     @Id
     @GeneratedValue
+    @NonNull
     private int ID;
     private String creditName;
     private int CustomerID;

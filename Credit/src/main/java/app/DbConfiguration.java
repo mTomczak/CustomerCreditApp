@@ -51,7 +51,7 @@ public class DbConfiguration {
         ds.setUrl("jdbc:mysql://localhost:3306/creditapp?useSSL=false");
         ds.setUsername("credituser");
         ds.setPassword("ork0t!QA");
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setInitialSize(5);
         return ds;
     }

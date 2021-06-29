@@ -1,8 +1,9 @@
 package app.model;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
-@Controller
+
+@Component
 public class RestCreditModel {
 
     private String userFirstName;
@@ -85,5 +86,8 @@ public class RestCreditModel {
 
     public void setUserID(int userID) {
         this.userID = userID;
+    }
+
+    public RestCreditModel() {
     }
 }

@@ -4,7 +4,6 @@ import app.dao.CreditDao;
 import app.dao.CreditDaoImpl;
 import app.model.Credit;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
 
