@@ -1,15 +1,19 @@
 package app;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class SpringRestBootApplication {
+public class SpringRestBootApplicationCredit {
 
     public static void main(String[] args) throws InterruptedException {
 
-        SpringApplication.run(SpringRestBootApplication.class);
+        SpringApplication.run(SpringRestBootApplicationCredit.class);
+
+
 //        ConfigurableApplicationContext contextApp = SpringApplication.run(SpringMvcBootApplication.class, args);
 
     }

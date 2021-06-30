@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class SpringRestBootApplication {
+public class SpringRestBootApplicationCustomer {
 
     public static void main(String[] args) throws InterruptedException {
 
-        SpringApplication.run(SpringRestBootApplication.class);
+        SpringApplication.run(SpringRestBootApplicationCustomer.class);
 
     }
 }

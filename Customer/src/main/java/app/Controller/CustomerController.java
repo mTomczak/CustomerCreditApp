@@ -5,10 +5,7 @@ import app.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,18 +31,29 @@ public class CustomerController {
     }
 
 
-    @RequestMapping("/putCustomer")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Customer createcredit(
-            @RequestParam() Customer customer){
-
+    @RequestMapping(value = "/createCustomer", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public void createCustomer(
+            @RequestBody() Customer customer){
+        System.out.println("Customer - podany customer: " + customer.getPesel());
         this.customer = customer;
 
-           if(customerRepository.findByPesel(customer.getPesel()) != null) {
-               customerRepository.save(customer);
-           }
+       try {
+           System.out.println("Customer - znaleziony w bazie : " + customerRepository.findByPesel(customer.getPesel()).getPesel());
+       }catch (NullPointerException e){
 
-        return customerRepository.findByPesel(customer.getPesel());
+       }
+
+           if(customerRepository.findByPesel(customer.getPesel()) == null) {
+               customerRepository.save(customer);
+               System.out.println("Customer - zapisany do bazy");
+
+           }
+    }
+    @RequestMapping("/getCustomer/{pesel}")
+    @ResponseStatus(HttpStatus.OK)
+    public Customer getCustomer(@PathVariable(value = "pesel") String pesel){
+        return  customerRepository.findByPesel(pesel);
 
     }
 

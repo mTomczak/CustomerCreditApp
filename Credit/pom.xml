@@ -24,7 +24,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>app.SpringRestBootApplication</mainClass>
+                                    <mainClass>app.SpringRestBootApplicationCredit</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
