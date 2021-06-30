@@ -57,7 +57,7 @@ public class CreditController {
 
     @RequestMapping("/createcredit")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createcredit(
+    public String createcredit(
             @RequestParam(defaultValue = "nieznany") String userFirstName,
             @RequestParam(defaultValue = "nieznany") String userSurname,
             @RequestParam(defaultValue = "nieznany") String personalNumber,
@@ -104,9 +104,21 @@ public class CreditController {
 
         logger.info("Pobrany customer z bazy " + customer.getFirstName());
 
-        
+        product.setProductName(restCreditModel.getProductName());
+        product.setValue(restCreditModel.getProductValue());
 
 
+        restTemplate.postForEntity("http://localhost:8081/createProduct", product, Product.class, Collections.EMPTY_MAP);
+
+        try{
+            product = restTemplate.getForObject("http://localhost:8081/getProduct/"+product.getProductName(), Product.class);
+            restCreditModel.setProductID(product.getID());
+        }catch (NullPointerException e){
+
+        }
+
+
+        return restCreditModel.toString();
 
     }
 

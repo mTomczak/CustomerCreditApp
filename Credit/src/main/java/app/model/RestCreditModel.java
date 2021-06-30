@@ -90,4 +90,9 @@ public class RestCreditModel {
 
     public RestCreditModel() {
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
