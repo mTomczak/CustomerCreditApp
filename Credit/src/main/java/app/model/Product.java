@@ -1,24 +1,16 @@
-package app.model;
-
-
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity
-@Table
+//@Entity
+//@Table
 @Component
 public class Product implements Serializable {
 
 
-    @Id
-    @GeneratedValue
-    @NonNull
+//    @Id
+//    @GeneratedValue
+//    @NonNull
     private int ID;
     private String productName;
     private float value;
