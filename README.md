@@ -3,6 +3,7 @@
 Skrypt tworzący baze danych:
 
 CREATE SCHEMA `creditapp` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci ;
+
 CREATE USER credituser@'%' IDENTIFIED BY '<ork0t!QA>';
 GRANT ALL PRIVILEGES ON creditapp.* TO credituser@'%';
 FLUSH PRIVILEGES;
