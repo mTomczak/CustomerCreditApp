@@ -1,7 +1,6 @@
-package app.Wraper;
+package app.wraper;
 
 
-import app.model.Credit;
 import app.model.Customer;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +19,7 @@ public class CustomerWraper {
         this.customerList = customerList;
     }
 
-    public CustomerWraper (){
+    public CustomerWraper(){
         this.customerList = new ArrayList<>();
     }
 }

@@ -10,6 +10,11 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
+/**
+ * The class that describes the credit object
+ *
+ */
+
 @Entity
 @Table
 @Component

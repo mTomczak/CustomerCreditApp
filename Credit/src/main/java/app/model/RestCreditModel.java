@@ -2,7 +2,10 @@ package app.model;
 
 import org.springframework.stereotype.Component;
 
-
+/**
+ *  The class that describes the RestCreditModel object
+ *  Auxiliary facility for servicing loans
+ */
 @Component
 public class RestCreditModel {
 

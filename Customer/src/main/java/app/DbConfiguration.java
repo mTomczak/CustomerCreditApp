@@ -27,7 +27,7 @@ public class DbConfiguration {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setPersistenceUnitName("persistence");
         Map<String, String> properties = new HashMap<>();
-        properties.put("javax.persistence.schema-generation.database.action", "none");
+        properties.put("javax.persistence.schema-generation.database.action", "drop-and-create");
         emf.setJpaPropertyMap(properties);
         emf.setDataSource(ds);
         emf.setJpaVendorAdapter(adapter);

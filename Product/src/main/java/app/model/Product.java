@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+/**
+ * The class that describes the product object
+ */
+
 @Entity
 @Table
 @Component

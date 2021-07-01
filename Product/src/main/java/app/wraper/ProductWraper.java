@@ -1,7 +1,6 @@
-package app.Wraper;
+package app.wraper;
 
 
-import app.model.Credit;
 import app.model.Product;
 import org.springframework.stereotype.Component;
 

@@ -1,16 +1,17 @@
+package app.model;
+
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
-//@Entity
-//@Table
+
+
+/**
+ * The class that describes the product object
+ */
 @Component
 public class Product implements Serializable {
 
-
-//    @Id
-//    @GeneratedValue
-//    @NonNull
     private int ID;
     private String productName;
     private float value;

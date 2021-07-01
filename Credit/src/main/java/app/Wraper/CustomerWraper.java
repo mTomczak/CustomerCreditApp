@@ -1,25 +1,29 @@
 package app.Wraper;
 
 
-import app.model.Credit;
+import app.model.Customer;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The class that wraps the Customer List.
+ */
+
 @Component
-public class CreditWraper {
-    private List<Credit> creditList;
+public class CustomerWraper {
+    private List<Customer> customerList;
 
-    public List<Credit> getCreditList() {
-        return creditList;
+    public List<Customer> getCustomerList() {
+        return customerList;
     }
 
-    public void setCreditList(List<Credit> creditList) {
-        this.creditList = creditList;
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
     }
 
-    public CreditWraper() {
-        this.creditList = new ArrayList<>();
+    public CustomerWraper (){
+        this.customerList = new ArrayList<>();
     }
 }

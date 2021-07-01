@@ -1,8 +1,12 @@
+package app.model;
+
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
-
+/**
+ * The class that describes the customer object
+ */
 @Component
 public class Customer implements Serializable {
 

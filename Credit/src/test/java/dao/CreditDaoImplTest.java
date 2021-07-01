@@ -1,24 +1,24 @@
 package dao;
 
-import app.dao.CreditDao;
+
+
 import app.dao.CreditDaoImpl;
 import app.model.Credit;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * A class that tests the connection with the base. Inserts and reads data about the loan.
  */
+@SpringBootTest(classes = {app.SpringRestBootApplicationCredit.class})
 class CreditDaoImplTest {
 
-//    @Autowired
-//    CreditDaoImpl creditDao;
-
-    private CreditDao creditDao = new CreditDaoImpl();
+    private CreditDaoImpl creditDao = new CreditDaoImpl();
 
     @Test
-    void saveCredit() {
+    void createCreditAndGetCreditTest() {
         Credit credit = new Credit();
         credit.setCreditName("Test Credit");
         creditDao.saveCredit(credit);
@@ -27,8 +27,8 @@ class CreditDaoImplTest {
         creditDao.closeManager();
         assertEquals(credit.getCreditName(), testCredit.getCreditName());
 
-
-
     }
+
+
 
 }
