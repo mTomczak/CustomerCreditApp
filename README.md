@@ -8,6 +8,7 @@ CREATE USER credituser@'%' IDENTIFIED BY '<ork0t!QA>';
 GRANT ALL PRIVILEGES ON creditapp.* TO credituser@'%';
 FLUSH PRIVILEGES;
 
+Dokumentacja dla każdego modułu w plikach nazwamodulu_doc.zip
 
 Uruchomienie aplikacji:
 Do działania aplikacji potrzebne są wszystkie trzy moduły:
@@ -46,5 +47,6 @@ Przykładowe wywołanei
 http://localhost:8080/getcredits
 
 Zwraca liste wszystkich kredytów wraz z informacją o kliencie i produkcie. 
+
 
 
