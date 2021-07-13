@@ -48,7 +48,7 @@ public class DbConfiguration {
     @Bean
     public DataSource createDS() {
         BasicDataSource ds = new BasicDataSource();
-        ds.setUrl("jdbc:mysql://localhost:3306/creditapp?useSSL=false");
+        ds.setUrl("jdbc:mysql://localhost:3307/creditapp?useSSL=false");
         ds.setUsername("credituser");
         ds.setPassword("ork0t!QA");
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
