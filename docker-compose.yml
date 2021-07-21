@@ -19,7 +19,7 @@ services:
       
   credit:
     container_name: creditmodules
-    image: creditmodule:v1
+    image: marcintomczak/creditmodule
     restart: always
         
     ports:
@@ -30,7 +30,7 @@ services:
       
   customer:
     container_name: customermodules
-    image: customermodule:v1
+    image: marcintomczak/customermodule
     restart: always
         
     
@@ -42,7 +42,7 @@ services:
       
   product:
     container_name: productmodules
-    image: productmodule:v1
+    image: marcintomczak/productmodule
     restart: always
         
     
