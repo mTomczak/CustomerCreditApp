@@ -1,8 +1,10 @@
 package app;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -21,6 +23,9 @@ import java.util.Map;
 @EnableTransactionManagement
 @EnableJpaRepositories
 public class DbConfiguration {
+
+    @Autowired
+    Environment environment;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(JpaVendorAdapter adapter, DataSource ds) {
@@ -47,7 +52,8 @@ public class DbConfiguration {
     @Bean
     public DataSource createDS() {
         BasicDataSource ds = new BasicDataSource();
-        ds.setUrl("jdbc:mysql://localhost:3307/creditapp?useSSL=false");
+//        ds.setUrl("jdbc:mysql://localhost:3307/creditapp?useSSL=false");
+        ds.setUrl(environment.getProperty("spring.datasource.url"));
         ds.setUsername("credituser");
         ds.setPassword("ork0t!QA");
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");

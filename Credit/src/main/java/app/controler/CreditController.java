@@ -12,6 +12,8 @@ import app.dao.CreditDaoImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,20 +41,22 @@ public class CreditController {
     private Logger logger = LoggerFactory.getLogger(SpringRestBootApplicationCredit.class);
 
     @Autowired
-    Credit credit;
+    private Credit credit;
 
     @Autowired
-    Customer customer;
+    private Customer customer;
 
     @Autowired
-    Product product;
+    private Product product;
 
     @Autowired
-    CustomerWraper customerWraper;
+    private CustomerWraper customerWraper;
 
     @Autowired
-    ProductWraper productWraper;
+    private ProductWraper productWraper;
 
+    @Autowired
+    private Environment environment;
 
 
     private RestTemplate restTemplate = new RestTemplate();
@@ -62,6 +66,7 @@ public class CreditController {
         this.creditDaoImpl = creditDaoimpl;
         this.restCreditModel = restCreditModel;
         this.creditRepository = creditRepository;
+
     }
 
     /**
@@ -123,12 +128,12 @@ public class CreditController {
         logger.info("Credit - Stworzony customer = " + customer.getPesel());
 
 
-        restTemplate.postForEntity("http://localhost:8082/createCustomer", customer, Customer.class, Collections.EMPTY_MAP);
+        restTemplate.postForEntity(environment.getProperty("client.url")+"createCustomer", customer, Customer.class, Collections.EMPTY_MAP);
 
         logger.info("Credit - Zapisany customer do bazy");
 
         try{
-            customer =  restTemplate.getForObject("http://localhost:8082/getcustomer/"+customer.getPesel(), Customer.class);
+            customer =  restTemplate.getForObject(environment.getProperty("client.url")+"getcustomer/"+customer.getPesel(), Customer.class);
             restCreditModel.setUserID(customer.getID());
         }catch (NullPointerException e ){
 
@@ -141,10 +146,10 @@ public class CreditController {
         product.setValue(restCreditModel.getProductValue());
 
 
-        restTemplate.postForEntity("http://localhost:8081/createProduct", product, Product.class, Collections.EMPTY_MAP);
+        restTemplate.postForEntity(environment.getProperty("product.url")+"createProduct", product, Product.class, Collections.EMPTY_MAP);
 
         try{
-            product = restTemplate.getForObject("http://localhost:8081/getProduct/"+product.getProductName(), Product.class);
+            product = restTemplate.getForObject(environment.getProperty("product.url")+"getProduct/"+product.getProductName(), Product.class);
             restCreditModel.setProductID(product.getID());
         }catch (NullPointerException e){
 
@@ -169,9 +174,9 @@ public class CreditController {
 
         List<Credit> creditList = creditRepository.findAll();
 
-        customerWraper = restTemplate.getForObject("http://localhost:8082/getallcustomer/", CustomerWraper.class);
+        customerWraper = restTemplate.getForObject(environment.getProperty("client.url")+"getallcustomer/", CustomerWraper.class);
 
-        productWraper = restTemplate.getForObject("http://localhost:8081/getallproduct/", ProductWraper.class);
+        productWraper = restTemplate.getForObject(environment.getProperty("product.url")+"getallproduct/", ProductWraper.class);
 
         List<RestCreditModel> finallCreditList = creditDaoImpl.getAllCredits(creditList, productWraper.getProductList(), customerWraper.getCustomerList());
 

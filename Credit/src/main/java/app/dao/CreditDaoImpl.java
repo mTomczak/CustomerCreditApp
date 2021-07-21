@@ -5,6 +5,7 @@ import app.model.Customer;
 import app.model.Product;
 import app.model.RestCreditModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -20,15 +21,18 @@ import java.util.Map;
 @Component
 public class CreditDaoImpl implements CreditDao {
 
+
     @Autowired
-    RestCreditModel restCreditModel;
+    private Environment environment;
 
     @PersistenceUnit
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
 
     public CreditDaoImpl() {
+        System.out.println("***************test*********************");
         entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
+//        entityManagerFactory = Persistence.createEntityManagerFactory(environment.getProperty("persistence.unit"));
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 

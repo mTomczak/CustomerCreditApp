@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+
+  db:
+    container_name: mysqldb
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+      MYSQL_DATABASE: creditapp
+      MYSQL_USER: credituser
+      MYSQL_PASSWORD: ork0t!QA
+
+    ports:
+      - "3307:3306"
+    volumes:
+      - db-vol:/var/lib/mysql
+      
+  credit:
+    container_name: creditmodules
+    image: creditmodule:v1
+    restart: always
+        
+    ports:
+      - "8080:8080"
+    
+    depends_on: 
+      - "db"
+      
+  customer:
+    container_name: customermodules
+    image: customermodule:v1
+    restart: always
+        
+    
+    ports:
+      - "8082:8082"
+    
+    depends_on: 
+      - "db"  
+      
+  product:
+    container_name: productmodules
+    image: productmodule:v1
+    restart: always
+        
+    
+    ports:
+      - "8081:8081"
+    
+    depends_on: 
+      - "db"    
+volumes:
+    db-vol:

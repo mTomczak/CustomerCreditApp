@@ -1,0 +1,20 @@
+
+{
+  "properties": [
+    {
+      "name": "persistence.unit",
+      "type": "java.lang.String",
+      "description": "Description for unit."
+    },
+    {
+      "name": "product.url",
+      "type": "java.lang.String",
+      "description": "Description for unit."
+    },
+    {
+      "name": "client.url",
+      "type": "java.lang.String",
+      "description": "Description for unit."
+    }
+
+  ] }
