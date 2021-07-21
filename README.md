@@ -1,12 +1,10 @@
 # CustomerCreditApp
 
-Skrypt tworzący baze danych:
+Pobranie i uruchomienie kontenerów:
 
-CREATE SCHEMA `creditapp` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci ;
+W katalogu głównym projektu znajduje się plik docker-compose.yml 
+docker-compose up - pobierze i uruchomi wszystkie obrazy. 
 
-CREATE USER credituser@'%' IDENTIFIED BY '<ork0t!QA>';
-GRANT ALL PRIVILEGES ON creditapp.* TO credituser@'%';
-FLUSH PRIVILEGES;
 
 Dokumentacja dla każdego modułu w plikach nazwamodulu_doc.zip
 
